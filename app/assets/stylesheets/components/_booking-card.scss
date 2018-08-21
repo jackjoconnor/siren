@@ -1,0 +1,22 @@
+.booking-card {
+  border: 1px solid #EBEBEB;
+  display: flex;
+  margin: 20px;
+  align-items: center;
+}
+
+.booking-card__image {
+  width: 180px;
+  height: 120px;
+  background-size: cover !important;
+}
+
+.booking-card__content {
+  margin-left: 20px;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.booking-card__status {
+  width: 100px;
+}

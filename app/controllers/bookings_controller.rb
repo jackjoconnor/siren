@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking.boat = @boat
     @booking.user = @user
     if @booking.save
-      redirect_to bookings_path
+      redirect_to dashboard_url
     else
       render 'boats/show'
     end

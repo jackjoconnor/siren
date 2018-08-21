@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>My Dashboard</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="show-box show-box-spacing">
+        <h3>My Bookings</h3>
+        <% current_user.bookings.each do |booking| %>
+        <div class="booking-card">
+          <%= link_to boat_path(booking.boat), :action => 'go' do %>
+              <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"></div>
+          <% end %>
+          <div class="booking-card__content">
+            <p><%= booking.boat.title %></p>
+            <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
+            <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
+          </div>
+          <div class="booking-card__status">
+            <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
+            <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="show-box show-box-spacing">
+        <h3>Incoming Bookings</h3>
+        <% current_user.owned_boats.each do |boat| %>
+          <% boat.bookings.each do |booking| %>
+            <div class="booking-card">
+              <%= link_to boat_path(boat), :action => 'go' do %>
+                  <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+              <% end %>
+              <div class="booking-card__content">
+                <p><%= boat.title %></p>
+                <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+                <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
+              </div>
+              <div class="booking-card__status">
+                <% if booking.status == "pending" %>
+                  <%= form_tag booking_path(booking), method: "patch" do %>
+                    <%= hidden_field_tag :status, :value => "rejected" %>
+                    <button type="submit">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  <% end %>
+                  <%= form_tag booking_path(booking), method: "patch" do %>
+                    <%= hidden_field_tag :status, :value => "confirmed" %>
+                    <button type="submit">
+                      <i class="fas fa-check"></i>
+                    </button>
+                  <% end %>
+                <% else %>
+                  <p><%= booking.status %></p>
+                <% end %>
+                <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="show-box show-box-spacing">
+        <h3>My Boats</h3>
+        <% current_user.owned_boats.each do |boat| %>
+          <%= boat.title %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
