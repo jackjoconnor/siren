@@ -45,13 +45,13 @@
               <div class="booking-card__status">
                 <% if booking.status == "pending" %>
                   <%= form_tag booking_path(booking), method: "patch" do %>
-                    <%= hidden_field_tag :status, :value => "rejected" %>
+                    <%= hidden_field_tag :status, "rejected" %>
                     <button type="submit">
                       <i class="fas fa-times"></i>
                     </button>
                   <% end %>
                   <%= form_tag booking_path(booking), method: "patch" do %>
-                    <%= hidden_field_tag :status, :value => "confirmed" %>
+                    <%= hidden_field_tag :status, "confirmed" %>
                     <button type="submit">
                       <i class="fas fa-check"></i>
                     </button>
@@ -70,7 +70,10 @@
   <div class="row">
     <div class="col-md-12">
       <div class="show-box show-box-spacing">
-        <h3>My Boats</h3>
+        <div class="boat-card-top">
+          <h3>My Boats</h3>
+          <%= link_to("Create new boat", new_boat_path) %>
+        </div>
         <% current_user.owned_boats.each do |boat| %>
           <%= boat.title %>
         <% end %>

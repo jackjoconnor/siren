@@ -20,3 +20,9 @@ end
 10.times do |x|
   Booking.create(boat_id: x , user_id: User.first.id, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
 end
+
+user = User.new(email: "test@example.com", password: "123456")
+user.owned_boats << Boat.last(5)
+user.bookings << Booking.create(boat_id: 1, user: user, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
+user.owned
+user.save
