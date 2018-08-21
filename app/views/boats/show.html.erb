@@ -1,17 +1,26 @@
-<div class="full_width_image" style="background-image: url(<%= @boat.photo %>);">
+<div class="full_width_image" style="background-image: url('<%= @boat.photo %>');">
 
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-6 col-md-offset-1">
       <h1><%= @boat.title %></h1>
-      <p><i class="fas fa-users"></i><%= @boat.capacity %></p>
+      <p><i class="fa-spacing fas fa-users"></i><%= @boat.capacity %></p>
       <hr>
-      <p><%= @boat.description %></p>
+      <div class="show-box">
+        <p><b>Description</b></p>
+        <p><%= @boat.description %></p>
+      </div>
     </div>
-    <div class="col-md-2">
-      <div class="booking-card">
-        <p><%= @boat.price %></p>
+    <div class="col-md-4">
+      <div class="show-box booking-box">
+        <p><span class="box-price"><b><%= @boat.price %>€</b></span>/day</p>
+        <hr>
+        <%= simple_form_for [@boat, @booking] do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
