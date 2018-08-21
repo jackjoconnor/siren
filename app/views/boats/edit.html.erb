@@ -1,2 +1,17 @@
-<h1>Boats#edit</h1>
-<p>Find me in app/views/boats/edit.html.erb</p>
+<h1>Update boat information</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Add a new boat</h1>
+      <%= simple_form_for [@boat] do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :capacity %>
+        <%= f.input :price %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit "Update boat information", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

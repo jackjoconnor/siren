@@ -23,9 +23,12 @@ class BoatsController < ApplicationController
   end
 
   def update
+    @boat.update(boat_params)
+    redirect_to dashboard_path
   end
 
   def destroy
+    @boat.destroy
   end
 
   def show

@@ -75,7 +75,21 @@
           <%= link_to("Create new boat", new_boat_path) %>
         </div>
         <% current_user.owned_boats.each do |boat| %>
-          <%= boat.title %>
+          <div class="booking-card">
+            <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+            <div class="booking-card__content">
+              <p><%= boat.title %></p>
+              <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+            </div>
+            <div class="booking-card__status">
+              <%= link_to edit_boat_path(boat) do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+              <%= link_to boat_path(boat), method: "delete" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
