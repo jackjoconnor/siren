@@ -6,18 +6,29 @@ class BoatsController < ApplicationController
   end
 
   def new
+    @boat = Boat.new
   end
 
   def create
+    @boat = Boat.new(boat_params)
+    @boat.user = current_user
+    if @boat.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    @boat.update(boat_params)
+    redirect_to dashboard_path
   end
 
   def destroy
+    @boat.destroy
   end
 
   def show
