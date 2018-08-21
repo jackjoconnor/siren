@@ -1,2 +1,27 @@
-<h1>Boats#show</h1>
-<p>Find me in app/views/boats/show.html.erb</p>
+<div class="full_width_image" style="background-image: url('<%= @boat.photo %>');">
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-1">
+      <h1><%= @boat.title %></h1>
+      <p><i class="fa-spacing fas fa-users"></i><%= @boat.capacity %></p>
+      <hr>
+      <div class="show-box">
+        <p><b>Description</b></p>
+        <p><%= @boat.description %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-box booking-box">
+        <p><span class="box-price"><b><%= @boat.price %>€</b></span>/day</p>
+        <hr>
+        <%= simple_form_for [@boat, @booking] do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
