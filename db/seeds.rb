@@ -12,7 +12,7 @@ end
 
 User.create(
   email: "roman.abramovich@billionaire.com",
-   password: "iamsorich"
+  password: "iamsorich"
 )
 
 User.create(
@@ -24,15 +24,16 @@ User.create(
 
 Boat.create(
   title: "Titanic",
-  user: User.where(email: "julien@gmail.com"),
+  user: User.find_by(email: "julien@gmail.com"),
   description: Faker::Lorem.paragraphs,
-  capacity: rand(2000..2001), price: rand(100000..110000),
+  capacity: rand(2000..2050),
+  price: rand(100000..110000),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg"
 )
 
 Boat.create(
   title: "Catamaran",
-  user: User.where(email: "julien@gmail.com"),
+  user: User.find_by(email: "julien@gmail.com"),
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..10),
   price: rand(80..450),
@@ -41,7 +42,7 @@ Boat.create(
 
 Boat.create(
   title: "Eclipse",
-  user: User.where(email: "roman.abramovich@billionaire.com"),
+  user: User.find_by(email: "roman.abramovich@billionaire.com"),
   description: Faker::Lorem.paragraphs,
   capacity: 40,
   price: 100000,
@@ -50,7 +51,7 @@ Boat.create(
 
 Boat.create(
   title: "Riva Iseo",
-  user: User.where(email: "roman.abramovich@billionaire.com"),
+  user: User.find_by(email: "roman.abramovich@billionaire.com"),
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..7),
   price: rand(1500..2000),
@@ -59,7 +60,7 @@ Boat.create(
 
 Boat.create(
   title: "Le Rivarama Super",
-  user: User.where(email: "roman.abramovich@billionaire.com"),
+  user: User.find_by(email: "roman.abramovich@billionaire.com"),
   description: Faker::Lorem.paragraphs,
   capacity: rand(6..14),
   price: rand(1000..1500),
@@ -124,10 +125,20 @@ Boat.create(
 
 user = User.new(email: "test@example.com", password: "123456")
 user.owned_boats << Boat.last(5)
-user.bookings << Booking.create(boat: Boat.first, user: user, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
+user.bookings << Booking.create(
+  boat: Boat.first,
+  user: user,
+  start_date: Faker::Date.between(500.days.ago, Date.today),
+  end_date: Faker::Date.between(500.days.ago, Date.today)
+)
 user.save
 
 
 Boat.find_each do |b|
-  Booking.create!(boat: b, user: User.first, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
+  Booking.create!(
+    boat: b,
+    user: User.first,
+    start_date: Faker::Date.between(500.days.ago, Date.today),
+    end_date: Faker::Date.between(500.days.ago, Date.today)
+  )
 end
