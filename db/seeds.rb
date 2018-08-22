@@ -2,12 +2,15 @@ Booking.delete_all
 Boat.delete_all
 User.delete_all
 
+# Random Users
+
 5.times do
   User.create(email: Faker::Internet.email, password: Faker::Internet.password(8))
 end
 
-User.create(email: "roman.abramovich@billionaire.com", password: "iamsorich" )
+#Julien and Roman User
 
+User.create(email: "roman.abramovich@billionaire.com", password: "iamsorich" )
 User.create(email: "julien@gmail.com", password: "julienjulien")
 
 #Boat that belong to Roman or julien
@@ -28,11 +31,12 @@ Boat.create(title: "Aston Martin AM37", description: Faker::Lorem.paragraphs, ca
 Boat.create(title: "Bavaria C45", description: Faker::Lorem.paragraphs, capacity: rand(4..8), price: rand(1000..1500), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg")
 Boat.create(title: "Azzuri", description: Faker::Lorem.paragraphs, capacity: rand(4..8), price: rand(250..300), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg")
 
-Boat.find_each do |b|
-  Booking.create!(boat: b, user: User.first, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
-end
-
 user = User.new(email: "test@example.com", password: "123456")
 user.owned_boats << Boat.last(5)
 user.bookings << Booking.create(boat: Boat.first, user: user, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
 user.save
+
+
+Boat.find_each do |b|
+  Booking.create!(boat: b, user: User.first, start_date: Faker::Date.between(500.days.ago, Date.today), end_date: Faker::Date.between(500.days.ago, Date.today))
+end
