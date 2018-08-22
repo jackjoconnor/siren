@@ -8,3 +8,9 @@
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid white;
 }
+.unstyled-button {
+  border: none;
+  background-color: transparent;
+  color: $brand-primary;
+  padding: 5px;
+}

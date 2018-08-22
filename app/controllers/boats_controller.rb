@@ -1,5 +1,6 @@
 class BoatsController < ApplicationController
   before_action :set_boat, only: [:edit, :update, :show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @boats = Boat.all
@@ -29,6 +30,7 @@ class BoatsController < ApplicationController
 
   def destroy
     @boat.destroy
+    redirect_to dashboard
   end
 
   def show

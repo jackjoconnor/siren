@@ -1,9 +1,17 @@
-<h1>Update boat information</h1>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h1>Add a new boat</h1>
+      <h1>Update boat information</h1>
       <%= simple_form_for [@boat] do |f| %>
+        <% if @boat.errors.any? %>
+          <div class="errors-container">
+            <ul>
+              <% @boat.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <%= f.input :title %>
         <%= f.input :description %>
         <%= f.input :capacity %>
