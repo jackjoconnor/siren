@@ -28,7 +28,7 @@ Boat.create(title: "Aston Martin AM37", description: Faker::Lorem.paragraphs, ca
 
 Boat.create(title: "Bavaria C45", description: Faker::Lorem.paragraphs, capacity: rand(4..8), price: rand(1000..1500), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg")
 
-Boat.create(title: "Titanic", User.where(email: "julien@gmail..com"), description: Faker::Lorem.paragraphs, capacity: rand(2000..2001), price: rand(100000..110000), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg")
+Boat.create(title: "Titanic", User.where(email: "julien@gmail.com"), description: Faker::Lorem.paragraphs, capacity: rand(2000..2001), price: rand(100000..110000), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg")
 
 Boat.create(title: "Azzuri", description: Faker::Lorem.paragraphs, capacity: rand(4..8), price: rand(250..300), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg")
 
