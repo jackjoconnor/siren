@@ -15,7 +15,7 @@ User.create(email: "julien@gmail.com", password: "julienjulien")
 
 #Boat that belong to Roman or julien
 
-Boat.create(title: "Titanic", User.where(email: "julien@gmail.com"), description: Faker::Lorem.paragraphs, capacity: rand(2000..2001), price: rand(100000..110000), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg")
+Boat.create(title: "Titanic", user: User.where(email: "julien@gmail.com"), description: Faker::Lorem.paragraphs, capacity: rand(2000..2001), price: rand(100000..110000), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg")
 Boat.create(title: "Catamaran", User.where(email: "julien@gmail.com"), description: Faker::Lorem.paragraphs, capacity: rand(4..10), price: rand(80..450), user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934799/photos-lucia-405-1330x800.jpg")
 
 Boat.create(title: "Eclipse", user: User.where(email: "roman.abramovich@billionaire.com"), description: Faker::Lorem.paragraphs, capacity: 40, price: 100000, user_id: User.last.id, remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933017/eclipse-1.jpg")
