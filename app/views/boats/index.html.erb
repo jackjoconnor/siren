@@ -16,7 +16,9 @@
 
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="boat-card">
-          <div class="boat-card-image" style="background-image: url('<%= boat.photo %>')"></div>
+          <%= link_to boat_path(boat) do %>
+            <div class="boat-card-image" style="background-image: url('<%= boat.photo %>')"></div>
+          <% end %>
           <div class="boat-card-content">
             <div class="boat-card-title">
               <h4><%= boat.title %></h4>
