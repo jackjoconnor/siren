@@ -8,6 +8,61 @@ User.delete_all
   User.create(email: Faker::Internet.email, password: Faker::Internet.password(8))
 end
 
+#Boat that belong to random users
+Boat.create(
+  title: "Dilbar",
+  description: Faker::Lorem.paragraphs,
+  capacity: 45,
+  price: 92540,
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933215/8dc001ba865dcdd64e768de6cd7ec457.jpg"
+)
+
+Boat.create(
+  title: "Dubourdieu Classic Express",
+  description: Faker::Lorem.paragraphs,
+  capacity: rand(4..10),
+  price: rand(80..450),
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933409/topiki-4-small.jpg"
+)
+
+Boat.create(
+  title: "Magazzu MX 18",
+  description: Faker::Lorem.paragraphs,
+  capacity: rand(4..10),
+  price: rand(600..1000),
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933580/26831-7398691.jpg"
+)
+
+Boat.create(
+  title: "Aston Martin AM37",
+  description: Faker::Lorem.paragraphs,
+  capacity: rand(4..8),
+  price: rand(1000..1500),
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934015/Aston-Martin-AM37-Powerboat-review.jpg"
+)
+
+Boat.create(
+  title: "Bavaria C45",
+  description: Faker::Lorem.paragraphs,
+  capacity: rand(4..8),
+  price: rand(1000..1500),
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg"
+)
+
+Boat.create(
+  title: "Azzuri",
+  description: Faker::Lorem.paragraphs,
+  capacity: rand(4..8),
+  price: rand(250..300),
+  user: User.last,
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg"
+)
+
 #Julien and Roman User
 
 User.create(
@@ -67,78 +122,16 @@ Boat.create(
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933814/73074_2015_ferretti_group_Riva_Riva_Aquariva_33.jpg"
 )
 
-
-#Boat that belong to random users
-Boat.create(
-  title: "Dilbar",
-  description: Faker::Lorem.paragraphs,
-  capacity: 45,
-  price: 92540,
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933215/8dc001ba865dcdd64e768de6cd7ec457.jpg"
-)
-
-Boat.create(
-  title: "Dubourdieu Classic Express",
-  description: Faker::Lorem.paragraphs,
-  capacity: rand(4..10),
-  price: rand(80..450),
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933409/topiki-4-small.jpg"
-)
-
-Boat.create(
-  title: "Magazzu MX 18",
-  description: Faker::Lorem.paragraphs,
-  capacity: rand(4..10),
-  price: rand(600..1000),
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933580/26831-7398691.jpg"
-)
-
-Boat.create(
-  title: "Aston Martin AM37",
-  description: Faker::Lorem.paragraphs,
-  capacity: rand(4..8),
-  price: rand(1000..1500),
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934015/Aston-Martin-AM37-Powerboat-review.jpg"
-)
-
-Boat.create(
-  title: "Bavaria C45",
-  description: Faker::Lorem.paragraphs,
-  capacity: rand(4..8),
-  price: rand(1000..1500),
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg"
-)
-
-Boat.create(
-  title: "Azzuri",
-  description: Faker::Lorem.paragraphs,
-  capacity: rand(4..8),
-  price: rand(250..300),
-  user_id: User.last.id,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg"
-)
-
-user = User.new(email: "test@example.com", password: "123456")
-user.owned_boats << Boat.last(5)
-user.bookings << Booking.create(
-  boat: Boat.first,
-  user: user,
-  start_date: Faker::Date.between(500.days.ago, Date.today),
-  end_date: Faker::Date.between(500.days.ago, Date.today)
-)
-user.save
-
+i = 1
 
 Boat.find_each do |b|
+  starts = (i..20 + i).to_a.sample.days.from_now
+  ends = starts + (1..10).to_a.sample.days
   Booking.create!(
     boat: b,
     user: User.first,
-    start_date: Faker::Date.between(500.days.ago, Date.today),
-    end_date: Faker::Date.between(500.days.ago, Date.today)
+    start_date: starts,
+    end_date: ends
   )
+  i += 20
 end
