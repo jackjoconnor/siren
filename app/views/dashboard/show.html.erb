@@ -44,20 +44,21 @@
               </div>
               <div class="booking-card__status">
                 <% if booking.status == "pending" %>
-                  <%= form_tag booking_path(booking), method: "patch" do %>
-                    <%= hidden_field_tag :status, "rejected" %>
-                    <%= button_tag do %>
-                      <i class="fas fa-times"></i>
+                  <div class="inline-form">
+                    <%= form_tag booking_path(booking), method: "patch" do %>
+                      <%= hidden_field_tag :status, "rejected" %>
+                      <%= button_tag class: "unstyled-button" do %>
+                        <i class="fas fa-times"></i>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <%= form_tag booking_path(booking), method: "patch" do %>
-                    <%= hidden_field_tag :status, "confirmed" %>
+                    <%= form_tag booking_path(booking), method: "patch" do %>
+                      <%= hidden_field_tag :status, "confirmed" %>
 
-                    <%= button_tag do %>
-                      <i class="fas fa-check"></i>
+                      <%= button_tag class: "unstyled-button" do %>
+                        <i class="fas fa-check"></i>
+                      <% end %>
                     <% end %>
-
-                  <% end %>
+                  </div>
                 <% else %>
                   <p><%= booking.status %></p>
                 <% end %>
