@@ -60,7 +60,7 @@
                     <% end %>
                   </div>
                 <% else %>
-                  <p><%= booking.status %></p>
+                  <p><%= booking.status.capitalize %></p>
                 <% end %>
                 <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
               </div>
