@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h1>Add a new boat</h1>
+      <h2 class="form-header">Add a new boat</h2>
       <%= simple_form_for [@boat] do |f| %>
         <% if @boat.errors.any? %>
           <div class="errors-container">
@@ -19,7 +19,10 @@
         <%= f.input :price %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
-        <%= f.submit "Add boat", class: "btn btn-primary" %>
+        <div class="form-footer">
+          <%= f.submit "Add Boat", class: "btn btn-primary" %>
+        </div>
+        <br>
       <% end %>
     </div>
   </div>
