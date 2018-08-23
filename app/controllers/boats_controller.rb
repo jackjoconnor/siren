@@ -1,9 +1,13 @@
 class BoatsController < ApplicationController
   before_action :set_boat, only: [:edit, :update, :show, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
-    @boats = Boat.all
+    if params[:query].present?
+      @boats = Boat.search_by_title_and_location(params[:query])
+    else
+      @boats = Boat.all
+    end
   end
 
   def new
@@ -34,6 +38,13 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @marker = [
+      {
+        lat: @boat.latitude,
+        lng: @boat.longitude,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    ]
     @booking = Booking.new
   end
 
