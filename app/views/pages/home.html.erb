@@ -6,8 +6,15 @@
       </div>
       <h3> Rent an adventure</h3>
     </div>
-    <div id="search-container">
-      <%= link_to "See Boats", boats_path, class: "btn btn-info" %>
+    <div class="search-bar">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= form_tag boats_path,class: "tiping",  method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control form-search",
+        placeholder: "Find a boat, a harbour..."
+      %>
+    <% end %>
     </div>
   </div>
 </div>
