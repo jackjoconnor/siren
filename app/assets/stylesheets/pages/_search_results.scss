@@ -1,8 +1,12 @@
 .boat-card-title {
-  margin-left: 5px;
+  margin-left: 18px;
   h4 {
     font-size: 18px;
   };
+}
+
+.titre{
+  margin-left:15px;
 }
 
 .flex {
@@ -28,7 +32,7 @@
 }
 
 .boat-card-image {
-  height: 150px;
+  height: 225px;
   background-position: center;
   background-size: cover;
   border-radius: 7px 7px 0 0;
@@ -39,7 +43,8 @@
 }
 
 .icons {
-margin-left: 5px;
+  margin-left: 5px;
+  color: #A9A9A9;
 }
 
 .btn-card {
@@ -63,6 +68,7 @@ margin-left: 5px;
   margin-right: 10px
 }
 
-.header-boat-number, h1{
-  margin-left: 17px
+.header-boat-number{
+  margin-left:15px;
+  color : #A9A9A9;
 }
