@@ -34,6 +34,13 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @marker = [
+      {
+        lat: @boat.latitude,
+        lng: @boat.longitude,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    ]
     @booking = Booking.new
   end
 
