@@ -1,8 +1,6 @@
 .description {
   margin-top: 25px;
-
 }
-
 .booking-box {
   margin: 20px;
   padding: 20px;
@@ -27,7 +25,16 @@
 }
 h2{
   margin-left: 0px;
- }
-
-
+}
+.show-header {
+  display: flex;
+  .title-and-capacity {
+    flex: 1 1 auto;
+  }
+  .profile-image {
+    width: 100px;
+    margin-top: 35px;
+    text-align: center;
+  }
+}
 
