@@ -8,22 +8,31 @@
     <div class="col-md-12">
       <div class="show-box show-box-spacing">
         <h3>My Bookings</h3>
+
+        <!-- Iterate over bookings made by the user -->
         <% current_user&.bookings&.each do |booking| %>
         <div class="booking-card">
+          <!-- Boat Image -->
           <%= link_to boat_path(booking.boat), :action => 'go' do %>
               <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"></div>
           <% end %>
+
+          <!-- Boat Description -->
           <div class="booking-card__content">
             <p><%= booking.boat.title %></p>
             <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
             <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
           </div>
+
+          <!-- Status of booking -->
           <div class="booking-card__status">
             <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
             <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
           </div>
         </div>
         <% end %>
+        <!-- End iteration -->
+
       </div>
     </div>
   </div>
@@ -31,19 +40,29 @@
     <div class="col-md-12">
       <div class="show-box show-box-spacing">
         <h3>Bookings of my Boats</h3>
+
+        <!-- Iterate over bookings for boats of the user -->
         <% current_user&.owned_boats&.each do |boat| %>
           <% boat.bookings.each do |booking| %>
             <div class="booking-card">
+
+              <!-- Image of Boat -->
               <%= link_to boat_path(boat), :action => 'go' do %>
                   <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
               <% end %>
+
+              <!-- Boat Description -->
               <div class="booking-card__content">
                 <p><%= boat.title %></p>
                 <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
                 <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
               </div>
+
+              <!-- Status of booking or buttons to set status -->
               <div class="booking-card__status">
                 <% if booking.status == "pending" %>
+
+                  <!-- Buttons to confirm or reject booking -->
                   <div class="inline-form">
                     <%= form_tag booking_path(booking), method: "patch" do %>
                       <%= hidden_field_tag :status, "rejected" %>
@@ -59,6 +78,8 @@
                       <% end %>
                     <% end %>
                   </div>
+                  <!-- End of button implementation -->
+
                 <% else %>
                   <p><%= booking.status.capitalize %></p>
                 <% end %>
@@ -67,6 +88,8 @@
             </div>
           <% end %>
         <% end %>
+        <!-- End of iteration -->
+
       </div>
     </div>
   </div>
@@ -77,13 +100,21 @@
           <h3>My Boats</h3>
           <%= link_to("Create new boat", new_boat_path) %>
         </div>
+
+        <!-- Iterate over owned boats -->
         <% current_user&.owned_boats&.each do |boat| %>
           <div class="booking-card">
+
+            <!-- Image of boat -->
             <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+
+            <!-- Boat description -->
             <div class="booking-card__content">
               <p><%= boat.title %></p>
               <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
             </div>
+
+            <!-- Edit and delete actions for boat -->
             <div class="booking-card__status">
               <%= link_to edit_boat_path(boat) do %>
                 <i class="fas fa-edit"></i>
@@ -94,6 +125,8 @@
             </div>
           </div>
         <% end %>
+        <!-- End iteration -->
+
       </div>
     </div>
   </div>

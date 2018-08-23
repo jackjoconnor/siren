@@ -11,6 +11,14 @@
         <p><b>Description</b></p>
         <p><%= @boat.description %></p>
       </div>
+      <div class="show-box">
+        <p><b>Location</b></p>
+        <p><i class="fas fa-map-marker-alt"></i><%= @boat.location %></p>
+        <div
+          id="map"
+          data-markers="<%= @marker.to_json %>"
+        ></div>
+      </div>
     </div>
     <div class="col-xs-12 col-md-4">
       <div class="booking-box">

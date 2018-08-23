@@ -2,6 +2,24 @@ Booking.delete_all
 Boat.delete_all
 User.delete_all
 
+# Example Ports
+
+PORTS = ["Marina Grande, Capri",
+  "Marina di Porto Cervo, Sardinia",
+  "Marina di Portofino, Genova",
+  "Ibiza Magna, Ibiza",
+  "Puerto Banús, Marbella",
+  "OneOcean Port Vell, Barcelona",
+  "Port Tarraco, Spain",
+  "Port de Saint Tropez, France",
+  "Port Hercule, Monaco",
+  "Port Vauban, Antibes",
+  "Porto Montenegro, Montenegro",
+  "Grand Harbour Marina, Valletta",
+  "Yas Marina, Abu Dhabi",
+  "Yacht Haven Grande, St Thomas, U.S. Virgin Islands",
+  "Port de Gustavia, Saint Barths"]
+
 # Random Users
 
 5.times do
@@ -15,7 +33,8 @@ Boat.create(
   capacity: 45,
   price: 92540,
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933215/8dc001ba865dcdd64e768de6cd7ec457.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933215/8dc001ba865dcdd64e768de6cd7ec457.jpg",
+  location: PORTS.sample
 )
 
 Boat.create(
@@ -24,7 +43,8 @@ Boat.create(
   capacity: rand(4..10),
   price: rand(80..450),
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933409/topiki-4-small.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933409/topiki-4-small.jpg",
+  location: PORTS.sample
 )
 
 Boat.create(
@@ -33,7 +53,8 @@ Boat.create(
   capacity: rand(4..10),
   price: rand(600..1000),
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933580/26831-7398691.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933580/26831-7398691.jpg",
+  location: PORTS.sample
 )
 
 Boat.create(
@@ -42,7 +63,8 @@ Boat.create(
   capacity: rand(4..8),
   price: rand(1000..1500),
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934015/Aston-Martin-AM37-Powerboat-review.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934015/Aston-Martin-AM37-Powerboat-review.jpg",
+  location: PORTS.sample
 )
 
 Boat.create(
@@ -51,7 +73,8 @@ Boat.create(
   capacity: rand(4..8),
   price: rand(1000..1500),
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg",
+  location: PORTS.sample
 )
 
 Boat.create(
@@ -60,7 +83,8 @@ Boat.create(
   capacity: rand(4..8),
   price: rand(250..300),
   user: User.last,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg",
+  location: PORTS.sample
 )
 
 #Julien and Roman User
@@ -83,7 +107,8 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(2000..2050),
   price: rand(100000..110000),
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg",
+  location: "Port of Southampton, Southampton, UK"
 )
 
 Boat.create(
@@ -92,7 +117,8 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..10),
   price: rand(80..450),
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934799/photos-lucia-405-1330x800.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934799/photos-lucia-405-1330x800.jpg",
+  location: "Port Adriano, Mallorca"
 )
 
 Boat.create(
@@ -101,7 +127,8 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: 40,
   price: 100000,
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933017/eclipse-1.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933017/eclipse-1.jpg",
+  location: "Hamilton Harbour, Bermuda"
 )
 
 Boat.create(
@@ -110,7 +137,8 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..7),
   price: rand(1500..2000),
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933305/Moottorivene-Riva-3e826ca790677d79-large.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933305/Moottorivene-Riva-3e826ca790677d79-large.jpg",
+  location: "Old Port of Marseille, France"
 )
 
 Boat.create(
@@ -119,7 +147,8 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(6..14),
   price: rand(1000..1500),
-  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933814/73074_2015_ferretti_group_Riva_Riva_Aquariva_33.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933814/73074_2015_ferretti_group_Riva_Riva_Aquariva_33.jpg",
+  location: "Port of Thessaloniki, Thessaloniki, Greece"
 )
 
 i = 1
