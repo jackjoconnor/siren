@@ -1,10 +1,10 @@
 // Import Google fonts
 
-@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900"|Montserrat:400,500,600,700');
 
 // Define fonts for body and headers
 $body-font: "Montserrat", "Helvetica", "sans-serif";
-$headers-font: "Lora", "Helvetica", "sans-serif";
+$headers-font: "Playfair Display", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,12 +16,32 @@ $headers-font: "Lora", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
+// Homepage title
+
 h1 {
   font-size: 50px;
-  letter-spacing: 5px;
   margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 20px;
+  font-weight: 900 !important;
 }
 
+// Other page titles
 h2 {
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
+
+// Sous titre de la home
+h3 {
+  font-style: italic;
+  font-size: 35px;
+  letter-spacing: 7px;
+}
+
+// Titres des cartes
+
+h4 {
 
 }

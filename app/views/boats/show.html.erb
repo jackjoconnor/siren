@@ -4,16 +4,16 @@
 <div class="container">
   <div class="row">
     <div class=" col-xs-12 col-md-6 col-md-offset-1">
-      <h1><%= @boat.title %></h1>
+      <h2><%= @boat.title %></h2>
       <p><i class="fa-spacing fas fa-users"></i><%= @boat.capacity %></p>
 
-      <div class="show-box">
+      <div class="description">
         <p><b>Description</b></p>
         <p><%= @boat.description %></p>
       </div>
     </div>
     <div class="col-xs-12 col-md-4">
-      <div class="show-box booking-box">
+      <div class="booking-box">
         <p><span class="box-price"><b><%= @boat.price %>€</b></span> / day</p>
         <hr>
         <%= simple_form_for [@boat, @booking] do |f| %>
