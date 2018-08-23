@@ -1,11 +1,12 @@
-.show-box {
-  border: 1px solid #EBEBEB;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  border-radius: 2px;
+.description {
+  margin-top: 25px;
+
 }
+
 .booking-box {
-  margin: 20px
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #E5E5E5;
 }
 .box-price {
   font-size: 30px;
@@ -24,5 +25,8 @@
 #map {
   height: 300px;
 }
+h2{
+  margin-left: 0px;
+ }
 
 
