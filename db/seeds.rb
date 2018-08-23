@@ -23,7 +23,9 @@ PORTS = ["Marina Grande, Capri",
 # Random Users
 
 5.times do
-  User.create(email: Faker::Internet.email, password: Faker::Internet.password(8))
+  User.create(email: Faker::Internet.email,
+    password: Faker::Internet.password(8),
+    name: Faker::Name.name)
 end
 
 #Boat that belong to random users
@@ -91,12 +93,15 @@ Boat.create(
 
 User.create(
   email: "roman.abramovich@billionaire.com",
-  password: "iamsorich"
+  password: "iamsorich",
+  name: "Roman Abramovich",
+  remote_photo_url: "https://res.cloudinary.com/dturke38u/image/upload/v1535030717/20161013183650935.650x0n.jpg"
 )
 
 User.create(
   email: "julien@gmail.com",
-  password: "julienjulien"
+  password: "julienjulien",
+  name: "Julien BdC"
 )
 
 #Boat that belong to Roman or julien

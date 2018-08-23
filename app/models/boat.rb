@@ -15,4 +15,5 @@ class Boat < ApplicationRecord
   validates :capacity, presence: true
   validates :price, presence: true
   validates :photo, presence: true
+  validates :location, presence: true
 end

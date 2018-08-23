@@ -1,9 +1,9 @@
 class BoatsController < ApplicationController
   before_action :set_boat, only: [:edit, :update, :show, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
   def index
-    if params[:query]
+    if params[:query].present?
       @boats = Boat.search_by_title_and_location(params[:query])
     else
       @boats = Boat.all
