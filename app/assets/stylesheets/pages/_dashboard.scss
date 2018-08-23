@@ -4,20 +4,38 @@ font-size: 24px;
 padding: 18px
 }
 
-.flex {
-  justify-content: space-around;
-}
 
 .nav {
-  font-size: 15px;
+  font-size: 20px;
   font-family: lora;
 }
 
-.tab-content {
-  margin: 50px;
+.nav-pills {
+  display: flex;
+  justify-content: center;
 }
 
-.show-box {
-  padding: 20px;
-  border-radius: 2px;
+.nav>li.active>a, .nav>li.active>a:focus, .nav>li.active>a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid $brand-primary;
+    font-weight: bold;
+    background-color: transparent;
+    color: $brand-primary
 }
+
+/* remove the "grey" border when hovering the li elements */
+.nav>li>a:hover{
+    border: 1px solid transparent;
+}
+
+/* remove the "grey" background colour when hovering the li elements */
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: transparent;
+}
+
+
+
+
+
