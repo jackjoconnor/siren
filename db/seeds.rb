@@ -108,7 +108,7 @@ Boat.create(
   capacity: rand(2000..2050),
   price: rand(100000..110000),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg",
-  location: "Port of Southampton"
+  location: "Port of Southampton, Southampton, UK"
 )
 
 Boat.create(
@@ -118,7 +118,7 @@ Boat.create(
   capacity: rand(4..10),
   price: rand(80..450),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934799/photos-lucia-405-1330x800.jpg",
-  location: "Port Adriano"
+  location: "Port Adriano, Mallorca"
 )
 
 Boat.create(
@@ -128,7 +128,7 @@ Boat.create(
   capacity: 40,
   price: 100000,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933017/eclipse-1.jpg",
-  location: "Hamilton Harbour"
+  location: "Hamilton Harbour, Bermuda"
 )
 
 Boat.create(
