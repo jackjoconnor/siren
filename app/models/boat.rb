@@ -1,5 +1,5 @@
 class Boat < ApplicationRecord
-
+  include PgSearch
   has_many :bookings, dependent: :destroy
   belongs_to :user
 
