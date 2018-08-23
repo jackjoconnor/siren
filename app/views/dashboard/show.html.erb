@@ -4,97 +4,121 @@
       <h1>My Dashboard</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="show-box show-box-spacing">
-        <h3>My Bookings</h3>
-        <% current_user&.bookings&.each do |booking| %>
-        <div class="booking-card">
-          <%= link_to boat_path(booking.boat), :action => 'go' do %>
-              <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"></div>
-          <% end %>
-          <div class="booking-card__content">
-            <p><%= booking.boat.title %></p>
-            <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
-            <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
-          </div>
-          <div class="booking-card__status">
-            <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
-            <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+  <div class=" navbar-container">
+    <ul class="nav nav-pills flex">
+      <li class="active"><a href="#tab-1" data-toggle="tab">My bookings</a></li>
+      <li><a href="#tab-2" data-toggle="tab">Bookings of my boat</a></li>
+      <li><a href="#tab-3" data-toggle="tab">My boats</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-1">
+        <div class="row" id="My-bookings">
+          <div class="col-md-12">
+            <div class="show-box show-box-spacing">
+              <h3>My Bookings</h3>
+              <% current_user&.bookings&.each do |booking| %>
+              <div class="booking-card">
+                <%= link_to boat_path(booking.boat), :action => 'go' do %>
+                    <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"></div>
+                <% end %>
+                <div class="booking-card__content">
+                  <p><%= booking.boat.title %></p>
+                  <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
+                  <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
+                </div>
+                <div class="booking-card__status">
+                  <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
+                  <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+                </div>
+              </div>
+              <% end %>
+            </div>
           </div>
         </div>
-        <% end %>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="show-box show-box-spacing">
-        <h3>Bookings of my Boats</h3>
-        <% current_user&.owned_boats&.each do |boat| %>
-          <% boat.bookings.each do |booking| %>
-            <div class="booking-card">
-              <%= link_to boat_path(boat), :action => 'go' do %>
-                  <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
-              <% end %>
-              <div class="booking-card__content">
-                <p><%= boat.title %></p>
-                <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
-                <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
-              </div>
-              <div class="booking-card__status">
-                <% if booking.status == "pending" %>
-                  <div class="inline-form">
-                    <%= form_tag booking_path(booking), method: "patch" do %>
-                      <%= hidden_field_tag :status, "rejected" %>
-                      <%= button_tag class: "unstyled-button" do %>
-                        <i class="fas fa-times"></i>
-                      <% end %>
-                    <% end %>
-                    <%= form_tag booking_path(booking), method: "patch" do %>
-                      <%= hidden_field_tag :status, "confirmed" %>
 
-                      <%= button_tag class: "unstyled-button" do %>
-                        <i class="fas fa-check"></i>
+      <div class="tab-pane" id="tab-2">
+        <div class="row" id="Bookings-of-my-boat">
+          <div class="col-md-12">
+            <div class="show-box show-box-spacing">
+              <h3>Bookings of my Boats</h3>
+              <% current_user&.owned_boats&.each do |boat| %>
+                <% boat.bookings.each do |booking| %>
+                  <div class="booking-card">
+                    <%= link_to boat_path(boat), :action => 'go' do %>
+                        <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+                    <% end %>
+                    <div class="booking-card__content">
+                      <p><%= boat.title %></p>
+                      <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+                      <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
+                    </div>
+                    <div class="booking-card__status">
+                      <% if booking.status == "pending" %>
+                        <div class="inline-form">
+                          <%= form_tag booking_path(booking), method: "patch" do %>
+                            <%= hidden_field_tag :status, "rejected" %>
+                            <%= button_tag class: "unstyled-button" do %>
+                              <i class="fas fa-times"></i>
+                            <% end %>
+                          <% end %>
+                          <%= form_tag booking_path(booking), method: "patch" do %>
+                            <%= hidden_field_tag :status, "confirmed" %>
+
+                            <%= button_tag class: "unstyled-button" do %>
+                              <i class="fas fa-check"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      <% else %>
+                        <p><%= booking.status.capitalize %></p>
                       <% end %>
+                      <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="tab-pane" id="tab-3">
+        <div class="row id="My-boats">
+          <div class="col-md-12">
+            <div class="show-box show-box-spacing">
+              <div class="boat-card-top">
+                <h3>My Boats</h3>
+                <%= link_to("Create new boat", new_boat_path) %>
+              </div>
+              <% current_user&.owned_boats&.each do |boat| %>
+                <div class="booking-card">
+                  <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+                  <div class="booking-card__content">
+                    <p><%= boat.title %></p>
+                    <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+                  </div>
+                  <div class="booking-card__status">
+                    <%= link_to edit_boat_path(boat) do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to boat_path(boat), method: "delete" do %>
+                      <i class="fas fa-trash-alt"></i>
                     <% end %>
                   </div>
-                <% else %>
-                  <p><%= booking.status.capitalize %></p>
-                <% end %>
-                <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="show-box show-box-spacing">
-        <div class="boat-card-top">
-          <h3>My Boats</h3>
-          <%= link_to("Create new boat", new_boat_path) %>
-        </div>
-        <% current_user&.owned_boats&.each do |boat| %>
-          <div class="booking-card">
-            <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
-            <div class="booking-card__content">
-              <p><%= boat.title %></p>
-              <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
-            </div>
-            <div class="booking-card__status">
-              <%= link_to edit_boat_path(boat) do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-              <%= link_to boat_path(boat), method: "delete" do %>
-                <i class="fas fa-trash-alt"></i>
+                </div>
               <% end %>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
