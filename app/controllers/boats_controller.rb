@@ -1,6 +1,6 @@
 class BoatsController < ApplicationController
   before_action :set_boat, only: [:edit, :update, :show, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:query].present?
@@ -51,7 +51,7 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-    params.require(:boat).permit(:title, :description, :photo, :price, :capacity)
+    params.require(:boat).permit(:title, :description, :photo, :price, :capacity, :location)
   end
 
   def set_boat

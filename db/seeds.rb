@@ -34,7 +34,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: 45,
   price: 92540,
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933215/8dc001ba865dcdd64e768de6cd7ec457.jpg",
   location: PORTS.sample
 )
@@ -44,7 +44,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..10),
   price: rand(80..450),
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933409/topiki-4-small.jpg",
   location: PORTS.sample
 )
@@ -54,7 +54,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..10),
   price: rand(600..1000),
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933580/26831-7398691.jpg",
   location: PORTS.sample
 )
@@ -64,7 +64,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..8),
   price: rand(1000..1500),
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934015/Aston-Martin-AM37-Powerboat-review.jpg",
   location: PORTS.sample
 )
@@ -74,7 +74,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..8),
   price: rand(1000..1500),
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934361/BavariaC45_1.jpg",
   location: PORTS.sample
 )
@@ -84,7 +84,7 @@ Boat.create(
   description: Faker::Lorem.paragraphs,
   capacity: rand(4..8),
   price: rand(250..300),
-  user: User.last,
+  user: User.all.sample,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534931469/byfuatncjlfw7pcaim3b.jpg",
   location: PORTS.sample
 )
