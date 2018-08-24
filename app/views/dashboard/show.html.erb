@@ -1,23 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>My Dashboard</h1>
-    </div>
+  <div class="row"></div>
+  <div class="dashboard-title-wrapper">
+    <h1 id="dashboard-title">My Dashboard</h1>
   </div>
   <div class=" navbar-container">
     <ul class="nav nav-pills">
-      <li class="active"><a href="#tab-1" data-toggle="tab">My bookings</a></li>
-      <li><a href="#tab-2" data-toggle="tab">Bookings of my boat</a></li>
-      <li><a href="#tab-3" data-toggle="tab">My boats</a></li>
+      <li class="active"><a href="#tab-1" data-toggle="tab">my bookings</a></li>
+      <li><a href="#tab-2" data-toggle="tab">bookings of my boat</a></li>
+      <li><a href="#tab-3" data-toggle="tab">my boats</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div class="tab-pane active" id="tab-1">
+      <div class="tab-pan active" id="tab-1">
         <div class="row" id="My-bookings">
           <div class="col-md-12">
             <div class="show-box show-box-spacing">
-              <h3>My Bookings</h3>
               <% current_user&.bookings&.each do |booking| %>
               <div class="booking-card">
                 <%= link_to boat_path(booking.boat), :action => 'go' do %>
@@ -43,7 +41,6 @@
         <div class="row" id="Bookings-of-my-boat">
           <div class="col-md-12">
             <div class="show-box show-box-spacing">
-              <h3>Bookings of my Boats</h3>
               <% current_user&.owned_boats&.each do |boat| %>
                 <% boat.bookings.each do |booking| %>
                   <div class="booking-card">
@@ -92,7 +89,6 @@
           <div class="col-md-12">
             <div class="show-box show-box-spacing">
               <div class="boat-card-top">
-                <h3>My Boats</h3>
                 <%= link_to("Create new boat", new_boat_path) %>
               </div>
               <% current_user&.owned_boats&.each do |boat| %>
