@@ -5,56 +5,73 @@
   </div>
   <div class=" navbar-container">
     <ul class="nav nav-pills">
-      <li class="active"><a href="#tab-1" data-toggle="tab">my bookings</a></li>
-      <li><a href="#tab-2" data-toggle="tab">bookings of my boat</a></li>
-      <li><a href="#tab-3" data-toggle="tab">my boats</a></li>
+      <li class="active"><a href="#tab-1" data-toggle="tab" class="toogle-margin">My Bookings</a></li>
+      <li><a href="#tab-2" data-toggle="tab" class="toogle-margin">Bookings of my Boat</a></li>
+      <li><a href="#tab-3" data-toggle="tab" class="toogle-margin">My Boats</a></li>
     </ul>
-
-    <!-- Tab panes -->
     <div class="tab-content">
-      <div class="tab-pan active" id="tab-1">
-        <div class="row" id="My-bookings">
-          <div class="col-md-12">
-            <div class="show-box show-box-spacing">
-              <% current_user&.bookings&.each do |booking| %>
-              <div class="booking-card">
-                <%= link_to boat_path(booking.boat), :action => 'go' do %>
-                    <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"></div>
-                <% end %>
-                <div class="booking-card__content">
-                  <p><%= booking.boat.title %></p>
-                  <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
-                  <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
-                </div>
-                <div class="booking-card__status">
-                  <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
-                  <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+      <div class="tab-pane active" id="tab-1">
+        <div class="show-box show-box-spacing">
+              <!-- Iterate over bookings made by the user -->
+          <div class="row" id="My-bookings">
+            <% current_user&.bookings&.each do |booking| %>
+              <div class="col-xs-4">
+                <div class="booking-card">
+                  <!-- Boat Image -->
+                  <%= link_to boat_path(booking.boat), :action => 'go' do %>
+                      <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"><div class="positioned-avatar" style="background-image: url('<%= booking.boat.user.photo %>');"></div></div>
+                      <div style="height: 50px;"></div>
+                  <% end %>
+
+                  <!-- Boat Description -->
+                  <div class="booking-card__content">
+                    <p><b><%= booking.boat.title %></b></p>
+                    <div>
+                      <i class="fas fa-map-marker-alt marker"></i><%= booking.boat.location %>
+                    </div>
+                    <div>
+                      <i class="fa-spacing fas fa-users"></i><%= booking.boat.capacity %>
+                    </div>
+                    <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
+                    <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
+                    <p><%= booking.status.capitalize %><%= "..." if booking.status == "pending" %></p>
+                  </div>
                 </div>
               </div>
-              <% end %>
-            </div>
+            <% end %>
+            <!-- End iteration -->
           </div>
         </div>
       </div>
-
       <div class="tab-pane" id="tab-2">
-        <div class="row" id="Bookings-of-my-boat">
-          <div class="col-md-12">
-            <div class="show-box show-box-spacing">
-              <% current_user&.owned_boats&.each do |boat| %>
-                <% boat.bookings.each do |booking| %>
+        <div class="show-box show-box-spacing">
+          <!-- Iterate over bookings made by the user -->
+          <div class="row" id="Bookings-of-my-boat">
+            <% current_user&.owned_boats&.each do |boat| %>
+              <% boat.bookings.each do |booking| %>
+                <div class="col-xs-4">
                   <div class="booking-card">
-                    <%= link_to boat_path(boat), :action => 'go' do %>
-                        <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
+                    <!-- Boat Image -->
+                    <%= link_to boat_path(booking.boat), :action => 'go' do %>
+                        <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"><div class="positioned-avatar" style="background-image: url('<%= booking.user.photo %>');"></div></div>
+                        <div style="height: 50px;"></div>
                     <% end %>
+
+                    <!-- Boat Description -->
                     <div class="booking-card__content">
-                      <p><%= boat.title %></p>
-                      <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+                      <p><b><%= boat.title %></b></p>
+                      <div style="text-align: center;">
+                        <i class="fas fa-map-marker-alt marker"></i><%= boat.location %>
+                      </div>
+                      <div>
+                        <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
+                      </div>
                       <p><%= booking.start_date.strftime("%d/%m/%Y") %><%= " - " + booking.end_date.strftime("%d/%m/%Y") if booking.end_date.mjd - booking.start_date.mjd != 0 %></p>
-                    </div>
-                    <div class="booking-card__status">
+                      <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
                       <% if booking.status == "pending" %>
-                        <div class="inline-form">
+
+                        <!-- Buttons to confirm or reject booking -->
+                        <div class="inline-form" style="display: flex;">
                           <%= form_tag booking_path(booking), method: "patch" do %>
                             <%= hidden_field_tag :status, "rejected" %>
                             <%= button_tag class: "unstyled-button" do %>
@@ -62,8 +79,7 @@
                             <% end %>
                           <% end %>
                           <%= form_tag booking_path(booking), method: "patch" do %>
-                            <%= hidden_field_tag :status, "confirmed" %>
-
+                            <%= hidden_field_tag :status, 'confirm' %>
                             <%= button_tag class: "unstyled-button" do %>
                               <i class="fas fa-check"></i>
                             <% end %>
@@ -72,42 +88,53 @@
                       <% else %>
                         <p><%= booking.status.capitalize %></p>
                       <% end %>
-                      <p><b><%= (booking.end_date.mjd - booking.start_date.mjd + 1) * booking.boat.price %>€</b></p>
                     </div>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="tab-pane" id="tab-3">
-        <div class="row id="My-boats">
-          <div class="col-md-12">
-            <div class="show-box show-box-spacing">
-              <div class="boat-card-top">
-                <%= link_to("Create new boat", new_boat_path) %>
-              </div>
-              <% current_user&.owned_boats&.each do |boat| %>
-                <div class="booking-card">
-                  <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"></div>
-                  <div class="booking-card__content">
-                    <p><%= boat.title %></p>
-                    <i class="fa-spacing fas fa-users"></i><%= boat.capacity %>
-                  </div>
-                  <div class="booking-card__status">
-                    <%= link_to edit_boat_path(boat) do %>
-                      <i class="fas fa-edit"></i>
-                    <% end %>
-                    <%= link_to boat_path(boat), method: "delete" do %>
-                      <i class="fas fa-trash-alt"></i>
-                    <% end %>
                   </div>
                 </div>
               <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-3">
+        <div class="show-box show-box-spacing">
+          <!-- Iterate over bookings made by the user -->
+          <div class="row" id="My boats">
+            <% current_user&.owned_boats&.each do |boat| %>
+              <div class="col-xs-4">
+                <div class="boat-card-dashboard">
+                  <%= link_to boat_path(boat) do %>
+                    <div class="boat-card-image" style="background-image: url('<%= boat.photo %>')"></div>
+                  <% end %>
+                  <div class="boat-card-content">
+                    <div class="boat-card-title">
+                      <h4><%= boat.title %></h4>
+                    </div>
+
+                    <div class="flex icon-container">
+                      <div class="flex icons">
+                        <div class="capacity-icon">
+                          <i class="fa-spacing fas fa-users"></i><span> <%= boat.capacity %></span>
+                        </div>
+                        <i class="fas fa-euro-sign" style="margin-right: 5px"> </i> <%= boat.price %> /day
+                      </div>
+                      <div style="display: flex;">
+                        <div class="btn-card">
+                          <%= link_to edit_boat_path(boat) do %>
+                            <i class="fas fa-edit"></i>
+                          <% end %>
+                        </div>
+                        <div class="btn-card" style="margin-left: 10px;">
+                          <%= link_to boat_path(boat), method: "delete" do %>
+                            <i class="fas fa-trash-alt"></i>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>
@@ -115,6 +142,3 @@
     </div>
   </div>
 </div>
-
-
-
