@@ -1,2 +1,80 @@
 // Specific CSS for your home-page
 
+.grid {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 80%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  min-height: 0;  /* NEW */
+  min-width: 0;   /* NEW; needed for Firefox */
+}
+
+.box{
+   p {
+  margin-bottom:0px !important;
+  }
+}
+.one {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  background-image:url(https://res.cloudinary.com/dczyseu80/image/upload/v1535038828/michael-olsen-501079-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.two {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+  padding: 30px;
+}
+
+.three {
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+  background-image: url(https://res.cloudinary.com/dczyseu80/image/upload/v1535038829/alessandra-caretto-620159-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.four {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  padding: 30px;
+}
+
+.five {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+  background-image:url(https://res.cloudinary.com/dczyseu80/image/upload/v1535038827/milkovi-644011-unsplash_1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.six {
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+  padding: 30px;
+}
+
+.box-text {
+  border: 1px solid;
+  height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.how {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-exemple{
+  margin-top:25px;
+}
