@@ -31,7 +31,10 @@ end
 #Boat that belong to random users
 Boat.create(
   title: "Dilbar",
-  description: Faker::Lorem.paragraphs,
+  description: "You can go for a long offshore journey or a have a beautiful trip
+  along the coast. The capacity is 900 liters of fresh water and 1000 liters of fuel.
+  Power Generator and Watermaker are onboard. Solar Panels provide autonomous
+  electricity. Large dinghy with 20hp outboard engine will help to descent land.",
   capacity: 45,
   price: 92540,
   user: User.last,
@@ -41,7 +44,12 @@ Boat.create(
 
 Boat.create(
   title: "Dubourdieu Classic Express",
-  description: Faker::Lorem.paragraphs,
+  description: "Get on board the Dubourdieu Classic Express, a boat with sensitive
+  and luxury designs.
+
+  She offers excellent stability at anchor, what assures a comfortable and relaxing
+  stay in the interior and exterior spaces. She counts with a large solarium in the sundeck, which is perfect to sunbathe while tasting fresh champagne. She also has a broad area in the back, where you can enjoy a
+  Mediterranean lunch while observing the blue views.",
   capacity: rand(4..10),
   price: rand(80..450),
   user: User.last,
@@ -51,7 +59,12 @@ Boat.create(
 
 Boat.create(
   title: "Magazzu MX 18",
-  description: Faker::Lorem.paragraphs,
+  description: " Featuring modern comforts such as wireless music system and
+  electrical winches for put the sails on, whilst maintaining the stately,
+  classic-style interiors reminiscent of a period country home.
+
+  Lazy days comes with a highly skilled captain who is passionate and
+  infinitely knowledgeable about the yacht and her history. ",
   capacity: rand(4..10),
   price: rand(600..1000),
   user: User.last,
@@ -61,7 +74,9 @@ Boat.create(
 
 Boat.create(
   title: "Aston Martin AM37",
-  description: Faker::Lorem.paragraphs,
+  description: '
+  The Aston Martin is an elegant boat easy to navigate. Perfect for your ideal getaway from Barcelona
+  either for a one-day or multiple-day escapes.',
   capacity: rand(4..8),
   price: rand(1000..1500),
   user: User.last,
@@ -71,7 +86,11 @@ Boat.create(
 
 Boat.create(
   title: "Bavaria C45",
-  description: Faker::Lorem.paragraphs,
+  description: 'Bavaria C45 is ideal to take out for day trips with friends and
+  family.
+
+  Perfect to get away from work or simply enjoy the ocean during your vacation
+  stay while sightseeing and enjoying the beautiful Barcelona skyline.',
   capacity: rand(4..8),
   price: rand(1000..1500),
   user: User.last,
@@ -81,7 +100,13 @@ Boat.create(
 
 Boat.create(
   title: "Azzuri",
-  description: Faker::Lorem.paragraphs,
+  description: "Elegance on board. Imagine exploring the Mediterranean sea on this
+  beautiful boat. She offers elegant interiors, such as a large salon,
+  comfortable galley and four twin bed cabins equipped with luxurious amenities.
+
+  Azzuri also offers very spacious solariums and there is also a grill in the up
+  deck to prepare some shrimp or veal for guests and luxuriate in the jacuzzi.
+  Ask for the captain to ride a jet ski or to enjoy a refreshing meal on board!",
   capacity: rand(4..8),
   price: rand(250..300),
   user: User.last,
@@ -109,7 +134,12 @@ User.create(
 Boat.create(
   title: "Titanic",
   user: User.find_by(email: "julien@gmail.com"),
-  description: Faker::Lorem.paragraphs,
+  description: "The Titanic offers elegant interiors, such as a large salon,
+  comfortable galley and four twin bed cabins equipped with luxurious amenities.
+
+  The Titanic also offers very spacious solariums and there is also a grill in the up
+  deck to prepare some shrimp or veal for guests and luxuriate in the jacuzzi.
+  Ask for the captain to ride a jet ski or to enjoy a refreshing meal on board!",
   capacity: rand(2000..2050),
   price: rand(100000..110000),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934458/History_Speeches_6001_Titanic_Survivor_Eyewitness_still_624x352.jpg",
@@ -119,7 +149,14 @@ Boat.create(
 Boat.create(
   title: "Catamaran",
   user: User.find_by(email: "julien@gmail.com"),
-  description: Faker::Lorem.paragraphs,
+  description: "This is a majestic boat, easy to navigate.
+  Perfect for your ideal getaway either for a one-day sailing trip to relax
+  and enjoy the views, or a multiple-day escape with family and friends.
+
+  Price shown is high season and local taxes included.
+  Please inquire for pricing for other seasons.
+  Boats available to operate without a captain for qualified individuals.
+  Inquire about pricing",
   capacity: rand(4..10),
   price: rand(80..450),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534934799/photos-lucia-405-1330x800.jpg",
@@ -129,7 +166,11 @@ Boat.create(
 Boat.create(
   title: "Eclipse",
   user: User.find_by(email: "roman.abramovich@billionaire.com"),
-  description: Faker::Lorem.paragraphs,
+  description: "M/Y Eclipse is a luxury motor yacht built by Blohm+Voss of
+  Hamburg, Germany.
+
+  Her exterior and interior were designed by Terence Disdale.
+  The yacht was delivered to Russian businessman Roman Abramovich on 9 December 2010.",
   capacity: 40,
   price: 100000,
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933017/eclipse-1.jpg",
@@ -139,7 +180,10 @@ Boat.create(
 Boat.create(
   title: "Riva Iseo",
   user: User.find_by(email: "roman.abramovich@billionaire.com"),
-  description: Faker::Lorem.paragraphs,
+  description: "Sailing alone, with your loved one, with your family or friends.
+
+  This boat is the sailing dream come true!
+  It knows how to adapt to life's stages by adding or subtracting elements.",
   capacity: rand(4..7),
   price: rand(1500..2000),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933305/Moottorivene-Riva-3e826ca790677d79-large.jpg",
@@ -149,7 +193,20 @@ Boat.create(
 Boat.create(
   title: "Le Rivarama Super",
   user: User.find_by(email: "roman.abramovich@billionaire.com"),
-  description: Faker::Lorem.paragraphs,
+  description: "Le Rivarama Super is brand new. Inspired by the oceans.
+
+  This boat has luxury and design merged with Barcelona Skyline and
+  she seems to be an integral part of the surrounding environment.
+  On the upper deck, you can find a bbq ready to cook fresh fish, an ice maker and
+  a large sofa, together with a table and thanks to a couple of chairs, up to eight
+  people can cosily spend time together.
+
+  The front deck is perfect to sunbathe and enjoy Barcelonian vibes; while the back
+  is perfect to have dinner in the comfortable table and sofa area and jump to
+  the weather with security and style. Moreover, she counts with spacious interiors,
+  such as a master cabin featured with double bed, sofa and en-suite restroom and
+  two additional cabins with double bed. She is filled out with luxurious amenities,
+  such as a grill to cook fresh food at her interior, a swift dinghy and water toys.",
   capacity: rand(6..14),
   price: rand(1000..1500),
   remote_photo_url: "https://res.cloudinary.com/dczyseu80/image/upload/v1534933814/73074_2015_ferretti_group_Riva_Riva_Aquariva_33.jpg",
