@@ -1,3 +1,55 @@
-.inline-form {
+
+
+.dashboard-title-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+#dashboard-title{
+  font-size: 24px;
+  padding: 18px;
+  border: 1px solid grey;
+  margin: 40px;
+  letter-spacing: 1.5px;
+  display: inline-block;
+}
+
+a {
+  color: black;
+  font-family: montserrat;
+  font-size: 18px;
+  margin-left: 35px;
+  margin-right: 35px;
+  font-weight: 400
+
+}
+.nav-pills {
+  display: flex;
+  justify-content: center;
+}
+
+.nav>li.active>a, .nav>li.active>a:focus, .nav>li.active>a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid $brand-primary;
+    font-weight: 600;
+    background-color: transparent;
+    color: black;
+}
+
+/* remove the "grey" border when hovering the li elements */
+.nav>li>a:hover{
+  border-bottom: 3px solid $brand-primary;
+  color:black
+}
+
+/* remove the "grey" background colour when hovering the li elements */
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: transparent;
+}
+
+
+
+
