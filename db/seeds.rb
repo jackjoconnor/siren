@@ -126,7 +126,8 @@ User.create(
 User.create(
   email: "julien@gmail.com",
   password: "julienjulien",
-  name: "Julien BdC"
+  name: "Julien BdC",
+  remote_photo_url: "https://kitt.lewagon.com/placeholder/users/jlbdcn"
 )
 
 #Boat that belong to Roman or julien
