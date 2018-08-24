@@ -213,6 +213,18 @@ Boat.create(
   location: "Port of Thessaloniki, Thessaloniki, Greece"
 )
 
+Boat.create(
+  title: "History Supreme",
+  user: User.find_by(email: "roman.abramovich@billionaire.com"),
+  description: "It almost hurts doesn’t it? Made with over 100,000 kg of gold
+  and decorated with everything from T-Rex bones to miniature meteorites this
+  unfortunate case of what-the-heck-do-I-do-with-5-billion-dollars.",
+  capacity: rand(8..15),
+  price: rand(500000..2000000),
+  remote_photo_url: "https://res.cloudinary.com/dqiosiccn/image/upload/v1535110034/History-Supreme.png",
+  location: "Kuala Lumpur, Malaysia"
+)
+
 i = 1
 
 Boat.find_each do |b|
