@@ -18,19 +18,75 @@
     </div>
   </div>
 </div>
+
+<div class="how">
+  <h4>How does it work?</h4>
+</div>
+
 <div class="grid">
     <div class="box one">
     </div>
     <div class="box two">
+      <div class= "box-text">
+        <p> Book </p>
+        <p>
+        </p>
+      </div>
     </div>
     <div class="box three">
     </div>
     <div class="box four">
+      <div class= box-text>
+        <p> Sail safe </p>
+      </div>
     </div>
     <div class="box five">
     </div>
     <div class="box six">
+      <div class= box-text>
+        <p> Rate </p>
+      </div>
     </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 titre">
+      <h4 class="how"> Boats you can rent : </h4>
+    </div>
+  </div>
+
+  <div class="row row-exemple">
+    <% @boats.each do |boat| %>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="boat-card">
+          <%= link_to boat_path(boat) do %>
+            <div class="boat-card-image" style="background-image: url('<%= boat.photo %>')"></div>
+          <% end %>
+          <div class="boat-card-content">
+            <div class="boat-card-title">
+              <h4><%= boat.title %></h4>
+            </div>
+
+            <div class="flex icon-container">
+              <div class="flex icons">
+                <div class="capacity-icon">
+                  <i class="fa-spacing fas fa-users"></i><span> <%= boat.capacity %></span>
+                </div>
+                <i class="fas fa-euro-sign" style="margin-right: 5px"> </i> <%= boat.price %> /day
+              </div>
+              <div class="btn-card">
+                <%= link_to 'More info', boat_path(boat) %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>
 
 
