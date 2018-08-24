@@ -1,3 +1,16 @@
 .inline-form {
   display: flex;
 }
+.boat-card-dashboard {
+  font-size: 12px;
+  width: 100%;
+  margin: .5rem 0 1rem 0;
+  border-radius: 7px;
+  border: 1px solid #EBEBEB;
+  .btn-card:hover {
+   background-color: #76ADB9;
+    a {
+      color: white;
+    }
+  };
+}

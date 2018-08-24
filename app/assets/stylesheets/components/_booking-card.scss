@@ -1,22 +1,38 @@
 .booking-card {
   border: 1px solid #EBEBEB;
   display: flex;
-  margin: 20px;
+  flex-direction: column;
+  margin: .5rem 0 1rem 0;
   align-items: center;
+  width: 350px;
+  border-radius: 7px;
 }
 
 .booking-card__image {
-  width: 180px;
-  height: 120px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  width: 350px;
+  height: 200px;
   background-size: cover !important;
+  display: flex;
+  position: relative;
+  .positioned-avatar {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #fafafa;
+    top: 160px;
+    left: 140px;
+    border: 2px solid #fafafa;
+  }
 }
 
 .booking-card__content {
-  margin-left: 20px;
-  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
 
-.booking-card__status {
-  width: 100px;
 }
