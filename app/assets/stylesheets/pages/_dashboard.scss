@@ -1,5 +1,8 @@
-.inline-form {
+
+.dashboard-title-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .boat-card-dashboard {
   font-size: 12px;
@@ -8,9 +11,48 @@
   border-radius: 7px;
   border: 1px solid #EBEBEB;
   .btn-card:hover {
-   background-color: #76ADB9;
+    background-color: #76ADB9;
     a {
       color: white;
     }
   };
+}
+#dashboard-title{
+  font-size: 24px;
+  padding: 18px;
+  border: 1px solid grey;
+  margin: 40px;
+  letter-spacing: 1.5px;
+  display: inline-block;
+}
+
+.nav-pills {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  margin-right: 30px;
+}
+
+.nav>li.active>a, .nav>li.active>a:focus, .nav>li.active>a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid $brand-primary;
+    font-weight: 600;
+    background-color: transparent;
+    color: black;
+}
+
+/* remove the "grey" border when hovering the li elements */
+.nav>li>a:hover{
+  border-bottom: 3px solid $brand-primary;
+  color:black
+}
+
+/* remove the "grey" background colour when hovering the li elements */
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: transparent;
+}
+.toogle-margin {
+  margin: 0px 25px;
 }
