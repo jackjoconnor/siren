@@ -31,14 +31,14 @@
     font-size: 15px;
   }
   .footer .fa-heart {
-    color: #D23333;
+    color: $brand-primary;
   }
 
 }
 
-footer-copyright {
+.footer-copyright {
   display: flex;
-  margin-top: auto;
+  align-items: center;
 }
 
 

@@ -20,12 +20,12 @@
                   <!-- Boat Image -->
                   <%= link_to boat_path(booking.boat), :action => 'go' do %>
                       <div class="booking-card__image" style="background-image: url('<%= booking.boat.photo %>');"><div class="positioned-avatar" style="background-image: url('<%= booking.boat.user.photo %>');"></div></div>
-                      <div style="height: 50px;"></div>
+                      <div style="height: 30px;"></div>
                   <% end %>
 
                   <!-- Boat Description -->
                   <div class="booking-card__content">
-                    <p><b><%= booking.boat.title %></b></p>
+                    <h4 style="font-size: 18px;"><%= booking.boat.title %></h4>
                     <div>
                       <i class="fas fa-map-marker-alt marker"></i><%= booking.boat.location %>
                     </div>
@@ -54,12 +54,12 @@
                     <!-- Boat Image -->
                     <%= link_to boat_path(booking.boat), :action => 'go' do %>
                         <div class="booking-card__image" style="background-image: url('<%= boat.photo %>');"><div class="positioned-avatar" style="background-image: url('<%= booking.user.photo %>');"></div></div>
-                        <div style="height: 50px;"></div>
+                        <div style="height: 30px;"></div>
                     <% end %>
 
                     <!-- Boat Description -->
                     <div class="booking-card__content">
-                      <p><b><%= boat.title %></b></p>
+                      <h4 style="font-size: 18px;"><%= boat.title %></h4>
                       <div style="text-align: center;">
                         <i class="fas fa-map-marker-alt marker"></i><%= boat.location %>
                       </div>
@@ -75,13 +75,13 @@
                           <%= form_tag booking_path(booking), method: "patch" do %>
                             <%= hidden_field_tag :status, "rejected" %>
                             <%= button_tag class: "unstyled-button" do %>
-                              <i class="fas fa-times"></i>
+                              <i class="fas fa-times btn-card" style="font-size: 14px;"></i>
                             <% end %>
                           <% end %>
                           <%= form_tag booking_path(booking), method: "patch" do %>
                             <%= hidden_field_tag :status, 'confirm' %>
                             <%= button_tag class: "unstyled-button" do %>
-                              <i class="fas fa-check"></i>
+                              <i class="fas fa-check btn-card" style="padding-left: 3px; padding-right: 3px;font-size: 14px;"></i>
                             <% end %>
                           <% end %>
                         </div>
